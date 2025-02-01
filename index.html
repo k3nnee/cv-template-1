@@ -342,11 +342,11 @@
 
                 const workItems = document.querySelectorAll(".work-item-fade-out");
 
-                for (const section of workItems) {
-                    if (scrollPosition > section.offsetTop) {
+                if (workItems.length > 0 && workItems[0].offsetTop < scrollPosition) {
+                    for (const section of workItems) {
                         section.classList.add('work-item-fade-in');
+                        await sleep(400)
                     }
-                    await sleep(400)
                 }
             }
             document.addEventListener('scroll', function() {
